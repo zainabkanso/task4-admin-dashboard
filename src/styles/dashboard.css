@@ -1,0 +1,499 @@
+
+/* ========== GLOBAL ========== */
+
+:root {
+    --chocolate: #493126;
+    --brown: #785647;
+    --beige: #f7efe6;
+    --cream: #fffaf5;
+}
+
+body {
+    margin: 0;
+    background: var(--beige);
+    color: var(--chocolate);
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ========== SIDEBAR ========== */
+
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    background: var(--chocolate);
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.sidebar-label {
+    color: #d7b8a5;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #f5e9e0;
+    text-decoration: none;
+    padding: 13px 15px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background: var(--brown);
+    color: white;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    font-size: 12px;
+    color: #d7b8a5;
+}
+
+/* ========== MAIN CONTENT ========== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: var(--cream);
+    border-bottom: 1px solid #e4d3c7;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-profile i {
+    font-size: 28px;
+}
+
+.dashboard-content {
+    padding: 35px;
+}
+
+.dashboard-content h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+}
+
+/* ========== MOBILE ========== */
+
+.menu-toggle {
+    border: none;
+    background: transparent;
+    font-size: 26px;
+    color: var(--chocolate);
+}
+
+.sidebar-overlay {
+    display: none;
+}
+
+@media (max-width: 991px) {
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1050;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1040;
+    }
+
+    .topbar {
+        padding: 16px 20px;
+    }
+
+    .dashboard-content {
+        padding: 25px 20px;
+    }
+}
+
+/* ========== DASHBOARD OVERVIEW ========== */
+
+.page-heading {
+    margin-bottom: 35px;
+}
+
+.section-label {
+    color: var(--brown);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+/* ========== STAT CARDS ========== */
+
+.stat-card {
+    background: var(--cream);
+    border: 1px solid #e9dcd0;
+    border-radius: 16px;
+    padding: 25px;
+    height: 100%;
+    box-shadow: 0 6px 20px rgba(73, 49, 38, 0.05);
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1e2d6;
+    border-radius: 12px;
+    color: var(--brown);
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.stat-card p {
+    color: var(--brown);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.stat-card h2 {
+    color: var(--chocolate);
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* ========== COURSE MANAGEMENT ========== */
+
+.courses-page .table-responsive {
+    background: var(--cream);
+    border: 1px solid #e9dcd0;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.courses-page .table {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.courses-page .table th {
+    background: #f1e2d6;
+    color: var(--chocolate);
+    font-size: 13px;
+    padding: 16px;
+}
+
+.courses-page .table td {
+    background: transparent;
+    color: var(--brown);
+    font-size: 14px;
+    padding: 16px;
+}
+
+.courses-page .badge {
+    padding: 8px 12px;
+    font-weight: 500;
+}
+
+.courses-page .form-control {
+    padding: 12px 16px;
+    border: 1px solid #e9dcd0;
+    border-radius: 10px;
+}
+
+.courses-page .form-control:focus {
+    border-color: var(--brown);
+    box-shadow: 0 0 0 3px rgba(120, 86, 71, 0.12);
+}
+
+/* ========== STUDENTS MANAGEMENT ========== */
+
+.students-page .students-table {
+    background: var(--cream);
+    border: 1px solid #e9dcd0;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.students-page .table {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.students-page .table th {
+    background: #f1e2d6;
+    color: var(--chocolate);
+    font-size: 13px;
+    padding: 16px;
+}
+
+.students-page .table td {
+    background: transparent;
+    color: var(--brown);
+    font-size: 14px;
+    padding: 16px;
+}
+
+.students-page .form-control {
+    padding: 12px 16px;
+    border: 1px solid #e9dcd0;
+    border-radius: 10px;
+}
+
+.students-page .form-control:focus {
+    border-color: var(--brown);
+    box-shadow: 0 0 0 3px rgba(120, 86, 71, 0.12);
+}
+
+
+/* ========== STUDENT ACTION BUTTONS ========== */
+
+.btn-add-student {
+    background: var(--chocolate);
+    color: white;
+    border-radius: 10px;
+    padding: 11px 20px;
+    font-weight: 500;
+}
+
+.btn-add-student:hover {
+    background: var(--brown);
+    color: white;
+}
+
+.btn-action {
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid #e9dcd0;
+    background: #fffaf5;
+    font-size: 15px;
+}
+
+.btn-view {
+    color: #5477a4;
+}
+
+.btn-edit {
+    color: #95703e;
+}
+
+.btn-delete {
+    color: #c45b55;
+}
+
+.btn-action:hover {
+    background: #f1e2d6;
+}
+
+
+/* ========== REGISTRATIONS MANAGEMENT ========== */
+
+/* Page Heading */
+.registrations-page .page-heading {
+    margin-bottom: 30px;
+}
+
+/* Search and Filter */
+.registrations-page .form-control,
+.registrations-page .form-select {
+    padding: 12px 16px;
+    background: var(--cream);
+    border: 1px solid #e9dcd0;
+    border-radius: 10px;
+    color: var(--chocolate);
+    font-size: 14px;
+}
+
+.registrations-page .form-control:focus,
+.registrations-page .form-select:focus {
+    border-color: var(--brown);
+    box-shadow: 0 0 0 3px rgba(120, 86, 71, 0.12);
+    outline: none;
+}
+
+/* ========== REGISTRATIONS TABLE ========== */
+
+.registrations-table {
+    background: var(--cream);
+    border: 1px solid #e9dcd0;
+    border-radius: 16px;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.registrations-page .table {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.registrations-page .table th {
+    background: #f1e2d6;
+    color: var(--chocolate);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 16px;
+    border-bottom: 1px solid #e9dcd0;
+}
+
+.registrations-page .table td {
+    background: transparent;
+    color: var(--brown);
+    font-size: 14px;
+    padding: 16px;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee3d9;
+}
+
+.registrations-page .table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========== STATUS BADGES ========== */
+
+.registrations-page .badge {
+    padding: 8px 12px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Pending */
+.registrations-page .status-pending {
+    background: #fff1cc;
+    color: #956600;
+}
+
+/* Approved */
+.registrations-page .status-approved {
+    background: #dff3e5;
+    color: #287346;
+}
+
+/* Rejected */
+.registrations-page .status-rejected {
+    background: #fbe2e2;
+    color: #b03e3e;
+}
+
+/* ========== ACTION BUTTONS ========== */
+
+.registrations-page .btn-action {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fffaf5;
+    border: 1px solid #e9dcd0;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+/* View */
+.registrations-page .btn-view {
+    color: #5477a4;
+}
+
+/* Approve */
+.registrations-page .btn-approve {
+    color: #287346;
+}
+
+/* Reject */
+.registrations-page .btn-reject {
+    color: #c45b55;
+}
+
+/* Disabled - UI Only */
+.registrations-page .btn-action:disabled {
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 767px) {
+
+    .registrations-page .page-heading {
+        margin-bottom: 22px;
+    }
+
+    .registrations-table {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .registrations-page .table th,
+    .registrations-page .table td {
+        padding: 12px;
+        font-size: 12px;
+    }
+
+    .registrations-page .btn-action {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .registrations-page .badge {
+        font-size: 11px;
+        padding: 7px 10px;
+    }
+}
